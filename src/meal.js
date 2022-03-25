@@ -25,7 +25,7 @@ function formatPrice(initialPrice) {
 }
 
 function decreasePrice(decreasedPrice) {
-  return decreasedPrice * .10
+  return decreasedPrice * .90
 }
 
 module.exports = {
