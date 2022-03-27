@@ -17,10 +17,28 @@ function refundOrder (refundOrderNumberParam, deliveryOrdersArrayParam) {
   return
 }
 
+function listItems (deliveryOrdersArrayParam) {
+  var listOfItems = []
+  for (var i = 0; i <deliveryOrdersArrayParam.length; i++) {
+    listOfItems.push(deliveryOrdersArrayParam[i].item)
+  }
+  return listOfItems.join(", ")
+}
+
+function searchOrder (deliveryOrdersArrayParam, itemNameParam) {
+  var isInOrder = false
+  for (var i = 0; i < deliveryOrdersArrayParam.length; i++) {
+    if (deliveryOrdersArrayParam[i].item === itemNameParam) {
+      isInOrder = true
+    }  
+  }
+  return isInOrder
+}
+
 
 module.exports = {
   takeOrder,
   refundOrder,
-  // listItems,
-  // searchOrder
+  listItems,
+  searchOrder
 }
