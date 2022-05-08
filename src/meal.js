@@ -1,42 +1,41 @@
-function nameMenuItem(item) {
-  var menuItem = `Delicious ${item}`
-  return menuItem
-}
+const nameMenuItem = item => {
+  const menuItem = `Delicious ${item}`;
+  return menuItem;
+};
 
-function createMenuItem(itemParam, priceParam, typeParam) {
-  var menuItem = {};
+const createMenuItem = (itemParam, priceParam, typeParam) => {
+  const menuItem = {};
   menuItem.name = itemParam;
   menuItem.price = priceParam;
   menuItem.type = typeParam;
 
-  return menuItem
+  return menuItem;
 };
 
-function addIngredients(ingredient, ingredientsArray) {
-    if (ingredientsArray.includes(ingredient)) {
-      return ingredientsArray
-    } else {
-      return ingredientsArray.push(ingredient)
-    }
-}
+const addIngredients = (ingredient, ingredientsArray) => {
+  if (ingredientsArray.includes(ingredient)) {
+    return ingredientsArray;
+  } else {
+    return ingredientsArray.push(ingredient);
+  }
+};
 
-function formatPrice(initialPrice) {
-  return `$${initialPrice}`
-}
+const formatPrice = initialPrice => {
+  return `$${initialPrice}`;
+};
 
-function decreasePrice(decreasedPrice) {
-  return decreasedPrice * .90
-}
+const decreasePrice = decreasedPrice => {
+  return decreasedPrice * 0.9;
+};
 
-function createRecipe(titleParam, ingredientsParam, typeParam) {
-  var recipe = {};
-  recipe.title = titleParam
-  recipe.ingredients = ingredientsParam
-  recipe.type = typeParam
+const createRecipe = (titleParam, ingredientsParam, typeParam) => {
+  const recipe = {};
+  recipe.title = titleParam;
+  recipe.ingredients = ingredientsParam;
+  recipe.type = typeParam;
 
-  return recipe
-}
-
+  return recipe;
+};
 
 module.exports = {
   nameMenuItem,
@@ -45,4 +44,4 @@ module.exports = {
   formatPrice,
   decreasePrice,
   createRecipe
-}
+};
