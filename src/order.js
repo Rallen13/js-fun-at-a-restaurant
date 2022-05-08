@@ -1,44 +1,43 @@
-function takeOrder (orderParam, deliveryOrdersArrayParam) {
+const takeOrder = (orderParam, deliveryOrdersArrayParam) => {
   if (deliveryOrdersArrayParam.length < 3) {
-    return deliveryOrdersArrayParam.push(orderParam)
+    return deliveryOrdersArrayParam.push(orderParam);
   } else {
-    return deliveryOrdersArrayParam
+    return deliveryOrdersArrayParam;
   }
-}
+};
 
-function refundOrder (refundOrderNumberParam, deliveryOrdersArrayParam) {
-  for (var i = 0; i < deliveryOrdersArrayParam.length; i++) {
-    if (deliveryOrdersArrayParam[i].orderNumber === refundOrderNumberParam) {
-      deliveryOrdersArrayParam.splice(i, 1)
+const refundOrder = (refundOrderNumberParam, deliveryOrdersArrayParam) => {
+  deliveryOrdersArrayParam.forEach((deliveryOrder, i) => {
+    if (deliveryOrder.orderNumber === refundOrderNumberParam) {
+      deliveryOrdersArrayParam.splice(i, 1);
     } else {
-      deliveryOrdersArrayParam
+      deliveryOrdersArrayParam;
     }
-  }
-  return
-}
+  });
+  return;
+};
 
-function listItems (deliveryOrdersArrayParam) {
-  var listOfItems = []
-  for (var i = 0; i <deliveryOrdersArrayParam.length; i++) {
-    listOfItems.push(deliveryOrdersArrayParam[i].item)
-  }
-  return listOfItems.join(", ")
-}
+const listItems = deliveryOrdersArrayParam => {
+  const listOfItems = [];
+  deliveryOrdersArrayParam.forEach(deliveryOrder => {
+    listOfItems.push(deliveryOrder.item);
+  });
+  return listOfItems.join(", ");
+};
 
-function searchOrder (deliveryOrdersArrayParam, itemNameParam) {
-  var isInOrder = false
+const searchOrder = (deliveryOrdersArrayParam, itemNameParam) => {
+  let isInOrder = false;
   for (var i = 0; i < deliveryOrdersArrayParam.length; i++) {
     if (deliveryOrdersArrayParam[i].item === itemNameParam) {
-      isInOrder = true
-    }  
+      isInOrder = true;
+    }
   }
-  return isInOrder
-}
-
+  return isInOrder;
+};
 
 module.exports = {
   takeOrder,
   refundOrder,
   listItems,
   searchOrder
-}
+};
