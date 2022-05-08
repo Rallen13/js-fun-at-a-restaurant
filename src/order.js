@@ -27,11 +27,11 @@ const listItems = deliveryOrdersArrayParam => {
 
 const searchOrder = (deliveryOrdersArrayParam, itemNameParam) => {
   let isInOrder = false;
-  for (var i = 0; i < deliveryOrdersArrayParam.length; i++) {
-    if (deliveryOrdersArrayParam[i].item === itemNameParam) {
+  deliveryOrdersArrayParam.forEach(deliveryOrder => {
+    if (deliveryOrder.item === itemNameParam) {
       isInOrder = true;
     }
-  }
+  });
   return isInOrder;
 };
 
