@@ -1,69 +1,69 @@
-function createRestaurant(nameParam) {
+const createRestaurant = nameParam => {
   var restaurant = {
     name: nameParam,
     menus: {
       breakfast: [],
       lunch: [],
-      dinner: [],
+      dinner: []
     }
   };
-  return restaurant
-}
+  return restaurant;
+};
 
-function addMenuItem(restaurantParam, menuItemParam) {
+const addMenuItem = (restaurantParam, menuItemParam) => {
   if (menuItemParam.type === "breakfast") {
     if (restaurantParam.menus.breakfast.includes(menuItemParam)) {
-      return restaurantParam
+      return restaurantParam;
     } else {
-      restaurantParam.menus.breakfast.push(menuItemParam)
+      restaurantParam.menus.breakfast.push(menuItemParam);
     }
   } else if (menuItemParam.type === "lunch") {
     if (restaurantParam.menus.lunch.includes(menuItemParam)) {
-      return restaurantParam
+      return restaurantParam;
     } else {
-      restaurantParam.menus.lunch.push(menuItemParam)
+      restaurantParam.menus.lunch.push(menuItemParam);
     }
   } else if (menuItemParam.type === "dinner") {
     if (restaurantParam.menus.dinner.includes(menuItemParam)) {
-      return restaurantParam
+      return restaurantParam;
     } else {
-      restaurantParam.menus.dinner.push(menuItemParam)
+      restaurantParam.menus.dinner.push(menuItemParam);
     }
   }
-  return restaurantParam
-}
+  return restaurantParam;
+};
 
-function removeMenuItem(restaurantParam, menuItemParam, menuTypeParam) {
-  var removedItemMessage = `No one is eating our ${menuItemParam} - it has been removed from the ${menuTypeParam} menu!`
-
-  var errorMessage = `Sorry, we don't sell ${menuItemParam}, try adding a new recipe!`
+const removeMenuItem = (restaurantParam, menuItemParam, menuTypeParam) => {
+  let message = `Sorry, we don't sell ${menuItemParam}, try adding a new recipe!`;
+  const removedItemMessage = `No one is eating our ${menuItemParam} - it has been removed from the ${menuTypeParam} menu!`;
 
   if (menuTypeParam === "breakfast") {
-    for (var i = 0; i < restaurantParam.menus.breakfast.length; i++) {
-      if (restaurantParam.menus.breakfast[i].name === menuItemParam) {
-        restaurantParam.menus.breakfast.splice(i, 1)
-        return removedItemMessage
+    restaurantParam.menus.breakfast.forEach((breakfastItem, i) => {
+      if (breakfastItem.name === menuItemParam) {
+        restaurantParam.menus.breakfast.splice(i, 1);
+        return (message = removedItemMessage);
       }
-    }
+    });
   } else if (menuTypeParam === "lunch") {
-    for (var i = 0; i < restaurantParam.menus.lunch.length; i++) {
-      if (restaurantParam.menus.lunch[i].name === menuItemParam) {
-        restaurantParam.menus.lunch.splice(i, 1)
-        return removedItemMessage
+    restaurantParam.menus.lunch.forEach((lunchItem, i) => {
+      if (lunchItem.name === menuItemParam) {
+        restaurantParam.menus.lunch.splice(i, 1);
+        return (message = removedItemMessage);
       }
-    }
+    });
   } else if (menuTypeParam === "dinner") {
-    for (var i = 0; i < restaurantParam.menus.dinner.length; i++) {
-      if (restaurantParam.menus.dinner[i].name === menuItemParam) {
-        restaurantParam.menus.dinner.splice(i, 1)
-        return removedItemMessage
+    restaurantParam.menus.dinner.forEach((dinnerItem, i) => {
+      if (dinnerItem.name === menuItemParam) {
+        restaurantParam.menus.dinner.splice(i, 1);
+        return (message = removedItemMessage);
       }
-    }
+    });
   }
-  return errorMessage
-}
+
+  return message;
+};
 module.exports = {
   createRestaurant,
   addMenuItem,
   removeMenuItem
-}
+};
